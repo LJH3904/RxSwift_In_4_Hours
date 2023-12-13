@@ -34,17 +34,27 @@ class ViewController: UIViewController {
 
     // MARK: SYNC
 
+    func downloadjson(_ url: String, _ completion: @escaping (String?) -> Void) {
+        DispatchQueue.global().async {
+            let url = URL(string: MEMBER_LIST_URL)!
+            let data = try! Data(contentsOf: url)
+            let json = String(data: data, encoding: .utf8)
+            DispatchQueue.main.async {
+                completion(json)
+            }
+        }
+    }
+    
+    
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func onLoad() {
         editView.text = ""
         setVisibleWithAnimation(activityIndicator, true)
-
-        let url = URL(string: MEMBER_LIST_URL)!
-        let data = try! Data(contentsOf: url)
-        let json = String(data: data, encoding: .utf8)
-        self.editView.text = json
+        downloadjson(MEMBER_LIST_URL) { json in
+            self.editView.text = json
+            self.setVisibleWithAnimation(self.activityIndicator, false)
+        }
         
-        self.setVisibleWithAnimation(self.activityIndicator, false)
     }
 }
