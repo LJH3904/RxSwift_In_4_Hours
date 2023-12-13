@@ -25,15 +25,6 @@ class 나중에생기는데이터<T> {
 class ViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var editView: UITextView!
-    func testObserver(_ url: String) -> Observable<String?> {
-        return Observable.create { t in
-            t.onNext("안녕")
-            t.onNext("테스트")
-            t.onCompleted()
-            return Disposables.create()
-        }
-        
-    }
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
@@ -62,10 +53,22 @@ class ViewController: UIViewController {
     // 3. onnext
     // ---- 끝 ----
     // 한번 만들어지면 2로 통해 실행되고 4로 결과가 나오고
-    // 동작이 끝난 observable은 재사용 불가능 하다. 
+    // 동작이 끝난 observable은 재사용 불가능 하다.
     // 4. oncompleted / onError
     // 5. Disposed
     
+    
+    func testObserver(_ url: String) -> Observable<String?> {
+//        return Observable.create { t in
+//            t.onNext("안녕")
+//            t.onNext("테스트")
+//            t.onCompleted()
+//            return Disposables.create()
+//        }
+// 위와 아래는 동일한 코드이다 .
+        return Observable.just("테스트")
+//        Observable.from(["s","s"]) 도 가능 이건 여러개 보낼떄
+    }
     func downloadJson(_ url: String) -> Observable<String?> {
         return Observable.create { emm in
             let url = URL(string: url)!
@@ -105,17 +108,18 @@ class ViewController: UIViewController {
         setVisibleWithAnimation(activityIndicator, true)
         
         downloadJson(MEMBER_LIST_URL)
-            .subscribe { event in
-                switch event {
-                case .next(let json) :
-                    self.editView.text = json
-                    self.setVisibleWithAnimation(self.activityIndicator, false)
-                case .completed:
-                    break
-                case .error:
-                    break
-                }
-            }
+            .subscribe(onNext: { print($0) }, onCompleted: {print("com")}) 
+//            .subscribe { event in
+//                switch event {
+//                case .next(let json) :
+//                    self.editView.text = json
+//                    self.setVisibleWithAnimation(self.activityIndicator, false)
+//                case .completed:
+//                    break
+//                case .error:
+//                    break
+//                }
+//            }
     }
 }
 //    그러면 다른스레드에서 처리하고 그결과를 전달하는걸 이렇게 사용함 Rx의 필요성
