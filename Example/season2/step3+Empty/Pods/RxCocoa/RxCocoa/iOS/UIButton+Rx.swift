@@ -44,9 +44,9 @@ import UIKit
 
 extension Reactive where Base: UIButton {
     /// Reactive wrapper for `setTitle(_:for:)`
-    public func title(for controlState: UIControl.State = []) -> Binder<String?> {
-        Binder(self.base) { button, title in
-            button.setTitle(title, for: controlState)
+    public func name(for controlState: UIControl.State = []) -> Binder<String?> {
+        Binder(self.base) { button, name in
+            button.setTitle(name, for: controlState)
         }
     }
 

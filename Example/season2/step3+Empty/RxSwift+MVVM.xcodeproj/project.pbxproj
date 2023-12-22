@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36D07ED82B35305600ED842D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D07ED72B35305600ED842D /* Menu.swift */; };
+		36D07EDA2B35317700ED842D /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D07ED92B35317700ED842D /* MenuListViewModel.swift */; };
 		A168F0A022F7FB2C00A9E178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F09F22F7FB2C00A9E178 /* AppDelegate.swift */; };
 		A168F0A222F7FB2C00A9E178 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0A122F7FB2C00A9E178 /* MenuViewController.swift */; };
 		A168F0A522F7FB2C00A9E178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A168F0A322F7FB2C00A9E178 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36D07ED72B35305600ED842D /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		36D07ED92B35317700ED842D /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		606131A3A3F3F4D6822F8E43 /* Pods-RxSwift+MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift+MVVM.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift+MVVM/Pods-RxSwift+MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		A168F09C22F7FB2C00A9E178 /* RxSwift+MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift+MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A168F09F22F7FB2C00A9E178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,18 +114,11 @@
 		A1869B852360A7420088AA9A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A1869B862360A7520088AA9A /* Model */,
+				A168F0B722FADE7000A9E178 /* Model.swift */,
+				36D07ED72B35305600ED842D /* Menu.swift */,
 				A1869B872360A7580088AA9A /* Service */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		A1869B862360A7520088AA9A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A168F0B722FADE7000A9E178 /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A1869B872360A7580088AA9A /* Service */ = {
@@ -146,6 +143,7 @@
 			children = (
 				A168F0A122F7FB2C00A9E178 /* MenuViewController.swift */,
 				A168F0BB22FAF9B800A9E178 /* MenuItemTableViewCell.swift */,
+				36D07ED92B35317700ED842D /* MenuListViewModel.swift */,
 			);
 			path = MenuList;
 			sourceTree = "<group>";
@@ -292,11 +290,13 @@
 			files = (
 				A168F0A222F7FB2C00A9E178 /* MenuViewController.swift in Sources */,
 				A168F0B622FADE5B00A9E178 /* APIService.swift in Sources */,
+				36D07ED82B35305600ED842D /* Menu.swift in Sources */,
 				A1869B8D2360A8000088AA9A /* Extensions.swift in Sources */,
 				A168F0BE22FAFAC300A9E178 /* OrderViewController.swift in Sources */,
 				A168F0BC22FAF9B800A9E178 /* MenuItemTableViewCell.swift in Sources */,
 				A168F0A022F7FB2C00A9E178 /* AppDelegate.swift in Sources */,
 				A168F0B822FADE7000A9E178 /* Model.swift in Sources */,
+				36D07EDA2B35317700ED842D /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -428,7 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -444,14 +444,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77YZ9248DM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "RxSwift+MVVM/App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bearfried.tutorial.RxSwift-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.124124;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -464,14 +464,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77YZ9248DM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "RxSwift+MVVM/App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bearfried.tutorial.RxSwift-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.124124;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
